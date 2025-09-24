@@ -7,53 +7,61 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    overflow: hidden; /*evita a barra de rolagem indesejada!*/
+    position: relative;
+    overflow: hidden;
 }
 
 body::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
+  top: -20%;
+  left: -10%;
+  width: 600px;
+  height: 700px;
+  /*width: 40%;
+  height: 80%;*/
   background: linear-gradient(to bottom, hsl(264, 100%, 61%), hsl(293, 100%, 63%));
-  border-bottom-left-radius: 500px;
-  border-bottom-right-radius: 500px;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
   transform: translateX(-20%);
   z-index: -1; /* Manda o elemento para trás */
 }
-
+body::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 400px; 
+    height: 500px; 
+    background: hsl(270, 20%, 96%); 
+    border-top-left-radius: 50%; 
+    border-top-right-radius: 50%; 
+    transform: translate(20%, 20%); 
+    z-index: -1;
+}
 .container{
     display: flex;
-    position: relative;
+    justify-content: center;
     align-items: center;
+    /*position: relative;*/
     gap: 100px;
-    padding: 20px;
+    /*padding: 80px;*/
 }
 
-/*.color{
-    position: fixed;
-    background: linear-gradient(-50deg, hsl(264, 100%, 61%), hsl(293, 100%, 63%));
-    width: 400px;
-    height: 500px;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    
-}*/
 
 .mobile{
     background-color: white;
-    position: absolute;
-    width: 300px;
+    position: relative;
+    width: 280px;
     padding: 10px;
     background-color: hsl(270, 20%, 96%);
-    top: 30px;
     left: 350px;
+    top: 5px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    object-fit: contain;
 }
 
 .head img{
@@ -71,10 +79,6 @@ body::before {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 5px;
-}
-
-#circle{
-    
 }
 
 .head .previous{
@@ -103,9 +107,11 @@ h1{
 }
 #text{
     color: black;
-    margin-top: 15%;
     margin-left: 60%;
-    margin-right: 5%;    
+    margin-right: 10%;
+    max-width: 1000px;
+   /* margin: 20px auto; 
+    align-items: center;*/
 }
 
 #images{
@@ -120,31 +126,10 @@ h1{
 
 }
 
-/*.messageLeft{
-    border-radius: 10px;
-    background-color: hsl(240, 100%, 95%);
-    padding: 10px;
-    margin: 10px;
-    width: 190px;
-    color: hsl(271, 36%, 24%);
-
-}
-
-.messageRigth{
-    border-radius: 10px;
-    background-color: hsl(270, 20%, 96%);
-    color: hsl(271, 36%, 24%);
-    padding: 10px;
-    margin: 10px;
-    width: 190px;
-    position: relative;
-    left: 80px;
-}*/
-
 #messages {
   display: flex;
-  flex-direction: column; /* Para as mensagens se empilharem */
-  padding: 10px;
+  flex-direction: column;
+  padding: 7px;
   gap: 8px;
 }
 
@@ -152,16 +137,16 @@ h1{
   background-color: hsl(270, 20%, 96%);
   border-radius: 10px 10px 3px 10px; /* Ajuste os cantos para combinar com o design */
   padding: 8px 12px;
-  max-width: 60%; /* Impede que a mensagem ocupe 100% da largura */
-  align-self: flex-end; /* Alinha a mensagem à direita */
+  align-self: flex-end; 
+  font-size: 10px;
 }
 
 .messageLeft {
   background-color: hsl(271, 20%, 94%); /* Cor mais clara */
   border-radius: 10px 10px 10px 3px;
   padding: 8px 12px;
-  max-width: 60%;
   align-self: flex-start; /* Alinha a mensagem à esquerda */
+  font-size: 10px;
 }
 .messageDiferent{
     display: flex;
@@ -173,10 +158,16 @@ h1{
     margin: 10px;
     color: white;
     font-weight: bolder;
+    font-size: 10px;
+    
+}
+
+.messageLeft .messageRigth .messageDiferent{
+    width: 70%;
 }
 
 .messageDiferent > span{
-    font-size: 18px;
+    font-size: 9px;  
 }
 
 #messageBox{
@@ -189,14 +180,15 @@ h1{
     background-color: white;
     position: relative;
     padding: 10px;
+    font-size: 10px;
 }
 #next {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     background-color: hsl(271, 36%, 24%);
     border-radius: 50%;
     cursor: pointer;
@@ -207,44 +199,36 @@ h1{
 }
 
 .radio-circle {
-  width: 15px;
-  height: 15px;
+  width: 11.5px;
+  height: 11px;
   border-radius: 50%;
   border: 1px solid white;
   margin-right: 10px;
 }
 
 #next img{
-    /*margin-left: 11.5px;*/
     width: 15px;
     height: 15px;
     object-fit: contain;
 }
-
-/*@media only screen and (min-width: 600px) {
+@media (max-width: 600px) {
     .container{
-        display: block;
-    }
-
-    .color{
-        position: fixed;
-        background: linear-gradient(-50deg, hsl(264, 100%, 61%), hsl(293, 100%, 63%));
-        width: 350px;
-        height: 450px;
-        border-bottom-left-radius: 50px;
-        border-bottom-right-radius: 50px;
-    
+        flex-direction: column;
+        align-items: center;
     }
 
     .mobile{
-        background-color: white;
-        position: absolute;
-        width: 200px;
-        padding: 10px;
-        background-color: hsl(270, 20%, 96%);
-        top: 30px;
-        left: 350px;
-        border-radius: 15px 15px 15px 15px;
+       width: 300px;
+       left: 0;
+       top: 10px;
+       padding: 5px;
+    }
+
+    #text{
+        margin-left: 0;
+        margin-top: 5%;
+        font-size: 1rem;
+
     }
     
-}*/
+}
